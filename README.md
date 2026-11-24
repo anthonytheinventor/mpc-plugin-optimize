@@ -17,6 +17,7 @@ change, and count again.
 | `skills/mpc-plugin-optimize/scripts/count.sh` | Counts the instructions each audio block executes, for the 32-bit ARM build under an emulator |
 | `skills/mpc-plugin-optimize/scripts/scan.sh` | Compiles to 32-bit ARM assembly and counts the costly patterns per function |
 | `skills/mpc-plugin-optimize/scripts/drive.cpp` | The small host program both scripts use; on a device it is also a random-parameter CPU bench |
+| `skills/mpc-plugin-optimize/scripts/openmpc-bench.sh` | Fetches the current CPU bench of the [Open MPC](https://github.com/open-mpc/mpc-vst-plugins) plugin catalog, builds it and runs it on your MPC, for the verdict that catalog uses |
 
 The reference is useful by itself as reading for anyone who writes DSP for these machines.
 
@@ -55,12 +56,14 @@ copied.
 ## What the scripts need
 
 A Linux shell (WSL on Windows) with `zig`, `qemu-arm` 8.1 or later, `nm`, `awk` and `c++filt`, and a
-checkout of the MPC Plugin SDK.
+checkout of the MPC Plugin SDK. The Open MPC bench also needs `curl`, `ssh` and `scp`, and an MPC with
+developer mode on.
 
 ```
 scripts/count.sh <sdk-dir> <plugin.cpp>          # steady state
 scripts/count.sh <sdk-dir> <plugin.cpp> 4        # four random parameters per block
 scripts/scan.sh  <sdk-dir> <plugin.cpp>
+scripts/openmpc-bench.sh <plugin-arm32.so> <mpc-ip> -p     # Open MPC's bench, on the device
 ```
 
 ## License
