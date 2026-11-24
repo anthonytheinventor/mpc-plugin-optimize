@@ -1,0 +1,11 @@
+{
+  "name": "anthonytheinventor-mpc",
+  "owner": { "name": "anthonytheinventor" },
+  "plugins": [
+    {
+      "name": "mpc-plugin-optimize",
+      "source": "./",
+      "description": "A skill for cutting the CPU cost of Akai MPC plugin DSP on the 32-bit (ARM Cortex-A17) models, with measured costs and scripts."
+    }
+  ]
+}
