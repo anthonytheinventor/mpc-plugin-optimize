@@ -1,6 +1,9 @@
 {
   "name": "anthonytheinventor-mpc",
-  "owner": { "name": "anthonytheinventor" },
+  "description": "Skills for building plugins for Akai MPC standalone hardware.",
+  "owner": {
+    "name": "anthonytheinventor"
+  },
   "plugins": [
     {
       "name": "mpc-plugin-optimize",
