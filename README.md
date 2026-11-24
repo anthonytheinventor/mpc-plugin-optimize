@@ -63,7 +63,7 @@ developer mode on.
 scripts/count.sh <sdk-dir> <plugin.cpp>          # steady state
 scripts/count.sh <sdk-dir> <plugin.cpp> 4        # four random parameters per block
 scripts/scan.sh  <sdk-dir> <plugin.cpp>
-scripts/openmpc-bench.sh <plugin-arm32.so> <mpc-ip> -p     # Open MPC's bench, on the device
+scripts/openmpc-bench.sh <plugin-arm32.so> <mpc-ip>        # Open MPC's bench, on the device
 ```
 
 ## License
