@@ -15,6 +15,7 @@ change, and count again.
 | `skills/mpc-plugin-optimize/SKILL.md` | The method: what to ask first, the measuring loop, when to stop |
 | `skills/mpc-plugin-optimize/reference.md` | The guide: cycle costs timed on an MPC One+, compiler behavior, cache budget, NEON rules, bench behavior. Every figure is tagged with where it came from |
 | `skills/mpc-plugin-optimize/scripts/count.sh` | Counts the instructions each audio block executes, for the 32-bit ARM build under an emulator |
+| `skills/mpc-plugin-optimize/scripts/profile.sh` | Shows which functions a costly block spent its instructions in, beside a typical block |
 | `skills/mpc-plugin-optimize/scripts/scan.sh` | Compiles to 32-bit ARM assembly and counts the costly patterns per function |
 | `skills/mpc-plugin-optimize/scripts/drive.cpp` | The small host program both scripts use; on a device it is also a random-parameter CPU bench |
 | `skills/mpc-plugin-optimize/scripts/openmpc-bench.sh` | Fetches the current CPU bench of the [Open MPC](https://github.com/open-mpc/mpc-vst-plugins) plugin catalog, builds it and runs it on your MPC, for the verdict that catalog uses |
@@ -62,6 +63,7 @@ developer mode on.
 ```
 scripts/count.sh <sdk-dir> <plugin.cpp>          # steady state
 scripts/count.sh <sdk-dir> <plugin.cpp> 4        # four random parameters per block
+scripts/profile.sh <sdk-dir> <plugin.cpp> 4      # which functions the largest block ran
 scripts/scan.sh  <sdk-dir> <plugin.cpp>
 scripts/openmpc-bench.sh <plugin-arm32.so> <mpc-ip>        # Open MPC's bench, on the device
 ```
