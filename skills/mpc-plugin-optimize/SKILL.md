@@ -70,7 +70,7 @@ is not on the path, set `ZIG="python3 -m ziglang"` with the SDK's zig environmen
 |---|---|
 | `scripts/count.sh <sdk> <plugin.cpp> [k] [blocks] [out]` | Instructions per block for the arm32 build under the emulator. `k` is the number of parameters set to random values before each block (0 = steady state). Prints the median per frame and the largest block; writes `counts.txt`. |
 | `scripts/scan.sh <sdk> <plugin.cpp> [out]` | Compiles to arm32 assembly with the SDK's flags and prints, per function, the counts of the costly patterns. Leaves `out.s` for reading. |
-| `scripts/drive.cpp` | The harness both use: includes the plugin's source and drives it like a host. Copy it and add your own events (a program change at block 300, a mode switch) inside the block loop to measure them. To compare two builds bit for bit, write `oL` and `oR` to a file and compare the files. Run on a device, the same program is a random-parameter CPU bench: `taskset 2 ./drive 4`. |
+| `scripts/drive.cpp` | The harness both use: includes the plugin's source and drives it like a host. Copy it and add your own events (a program change at block 300, a mode switch) inside the block loop to measure them. To compare two builds bit for bit, write `oL` and `oR` to a file and compare the files. Run on a device, the same program is a random-parameter CPU bench: `taskset 4 ./drive 4`. Try each core first and use the quietest (reference section 14). |
 | `scripts/scan.awk` | The pattern counter behind `scan.sh`. |
 
 `<plugin.cpp>` is the one source file that ends with the SDK's entry macro. The harness needs the
