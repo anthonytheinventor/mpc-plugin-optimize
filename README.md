@@ -18,8 +18,8 @@ change, and time it on the device.
 | `skills/mpc-plugin-optimize/scripts/profile.sh` | Shows which functions a costly block spent its instructions in, beside a typical block |
 | `skills/mpc-plugin-optimize/scripts/scan.sh` | Compiles to 32-bit ARM assembly and counts the costly patterns per function |
 | `skills/mpc-plugin-optimize/scripts/coverage.sh` | Lists every function that ran, with its costs, in a table Claude fills in, so you can see what it looked at |
-| `skills/mpc-plugin-optimize/scripts/bitcheck.sh` | Proves two versions of the source give the same output bits on 32-bit ARM, or shows where they differ and how large the difference is in dB |
-| `skills/mpc-plugin-optimize/scripts/drive.cpp` | The small host program behind the counts; on a device it is the timing bench, and an events file holds a mode on or places a mode switch |
+| `skills/mpc-plugin-optimize/scripts/bitcheck.sh` | Proves two versions of the source give the same output bits on 32-bit ARM, or shows where they differ and how large the difference is in dB. It first checks that the plugin gives the same output twice |
+| `skills/mpc-plugin-optimize/scripts/drive.cpp` | The small host program behind the counts; on a device it is the timing bench. An events file holds a mode on, places a mode switch, or plays notes into an instrument |
 | `skills/mpc-plugin-optimize/scripts/openmpc-bench.sh` | Fetches the current CPU bench of the [Open MPC](https://github.com/open-mpc/mpc-vst-plugins) plugin catalog, builds it and runs it on your MPC, for the verdict that catalog uses |
 
 The reference is useful by itself as reading for anyone who writes DSP for these machines.
