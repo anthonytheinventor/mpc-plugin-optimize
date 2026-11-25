@@ -25,6 +25,24 @@ Cortex-A17 at 1.6 GHz. Code that feels light on a laptop can cause dropouts ther
 This skill gives Claude a measured way to fix that. Claude counts what your code costs, finds the
 waste, changes one thing, proves the output, and times the result on a real MPC.
 
+## It knows the chip
+
+The skill carries a field guide to the Cortex-A17, with costs timed on an MPC One+. Claude reads it
+before it touches your code, so every choice fits the processor your plugin runs on.
+
+- **What each operation costs.** A float divide takes 18 cycles, a mispredicted branch about 12, and
+  a table read that misses the cache up to about 200. Claude estimates each saving from those
+  figures before it writes a line.
+- **NEON, used where it pays.** Claude runs left and right through one vector instruction where the
+  code allows it, and it knows the limits: NEON on this chip has no divide, no square root and no
+  rounding.
+- **What the compiler leaves behind.** With the SDK's flags the compiler leaves float loops scalar,
+  and calls such as `fminf` and `floorf` become library calls. Claude finds both in the assembly.
+- **The cache budget.** The data a block touches should fit in about 24 KB of the 32 KB L1 cache.
+  Claude weighs a lookup table against plain math with that in mind.
+- **Float modes.** Claude knows which float mode the MPC host runs in, and how NEON and scalar code
+  treat the tiniest values differently.
+
 ## How it works
 
 <p align="center">
