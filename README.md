@@ -6,7 +6,7 @@ Live, Live II, One, One+, Key 61, Key 37 and Force.
 Those models run plugins on an ARM Cortex-A17 at 1.6 GHz. Code that is comfortable on a laptop can
 cause dropouts there. This skill gives Claude a measured method for a plugin built with the MPC Plugin
 SDK: count what the code costs, find where the cost is, change one thing, prove the sound did not
-change, and count again.
+change, and time it on the device.
 
 ## What is inside
 
@@ -17,7 +17,9 @@ change, and count again.
 | `skills/mpc-plugin-optimize/scripts/count.sh` | Counts the instructions each audio block executes, for the 32-bit ARM build under an emulator |
 | `skills/mpc-plugin-optimize/scripts/profile.sh` | Shows which functions a costly block spent its instructions in, beside a typical block |
 | `skills/mpc-plugin-optimize/scripts/scan.sh` | Compiles to 32-bit ARM assembly and counts the costly patterns per function |
-| `skills/mpc-plugin-optimize/scripts/drive.cpp` | The small host program both scripts use; on a device it is also a random-parameter CPU bench |
+| `skills/mpc-plugin-optimize/scripts/coverage.sh` | Lists every function that ran, with its costs, in a table Claude fills in, so you can see what it looked at |
+| `skills/mpc-plugin-optimize/scripts/bitcheck.sh` | Proves two versions of the source give the same output bits on 32-bit ARM, or shows where they differ |
+| `skills/mpc-plugin-optimize/scripts/drive.cpp` | The small host program behind the counts; on a device it is the timing bench, and an events file holds a mode on or places a mode switch |
 | `skills/mpc-plugin-optimize/scripts/openmpc-bench.sh` | Fetches the current CPU bench of the [Open MPC](https://github.com/open-mpc/mpc-vst-plugins) plugin catalog, builds it and runs it on your MPC, for the verdict that catalog uses |
 
 The reference is useful by itself as reading for anyone who writes DSP for these machines.
@@ -65,6 +67,8 @@ scripts/count.sh <sdk-dir> <plugin.cpp>          # steady state
 scripts/count.sh <sdk-dir> <plugin.cpp> 4        # four random parameters per block
 scripts/profile.sh <sdk-dir> <plugin.cpp> 4      # which functions the largest block ran
 scripts/scan.sh  <sdk-dir> <plugin.cpp>
+scripts/coverage.sh                              # the table of everything that ran
+scripts/bitcheck.sh <sdk-dir> <old.cpp> <new.cpp>   # same output bits?
 scripts/openmpc-bench.sh <plugin-arm32.so> <mpc-ip>        # Open MPC's bench, on the device
 ```
 
