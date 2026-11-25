@@ -1,7 +1,7 @@
 {
   "name": "mpc-plugin-optimize",
   "description": "A skill for cutting the CPU cost of Akai MPC plugin DSP on the 32-bit (ARM Cortex-A17) models, with measured costs and scripts.",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "author": { "name": "anthonytheinventor" },
   "repository": "https://github.com/anthonytheinventor/mpc-plugin-optimize",
   "license": "MIT"
