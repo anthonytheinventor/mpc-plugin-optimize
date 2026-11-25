@@ -124,10 +124,12 @@ Everything lives in `skills/mpc-plugin-optimize/`.
 | `reference.md` | The guide: cycle costs timed on an MPC One+, compiler behavior, the cache budget, NEON rules, how CPU benches behave. Each figure carries a tag that says where it came from. |
 | `scripts/count.sh` | Counts the instructions each audio block runs in the 32-bit ARM build, under an emulator, and reports how long the run has left. |
 | `scripts/profile.sh` | Shows which functions a costly block spent its instructions in, beside a typical block. |
+| `scripts/lineprof.sh` | Shows the cost by source line, for a plugin whose work sits in one large function. |
 | `scripts/scan.sh` | Compiles to 32-bit ARM assembly and counts the costly patterns in each function. |
 | `scripts/coverage.sh` | Lists every function that ran, with its costs, in a table Claude fills in. You see what it looked at. |
 | `scripts/bitcheck.sh` | Proves two versions give the same output bits on 32-bit ARM, or shows where they differ and how large the difference is in dB. It also compares the read-outs and the saved state. |
 | `scripts/drive.cpp` | The small host program behind the counts. On an MPC it becomes the timing bench. An events file holds a mode on, places a mode switch, or plays notes into an instrument. |
+| `scripts/devtime.sh` | Times an old and a new build on your MPC, alternating, and says whether the difference is real. |
 | `scripts/openmpc-bench.sh` | Fetches the CPU bench of the [Open MPC](https://github.com/open-mpc/mpc-vst-plugins) plugin catalog, builds it and runs it on your MPC, for the verdict that catalog uses. |
 
 The guide also stands alone as reading for anyone who writes DSP for these machines.
